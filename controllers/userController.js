@@ -3,8 +3,7 @@ module.exports = {
     // 登陆验证
     login(req, res) {
         // 1.接收用户参数
-        var obj = req.body
-        console.log(obj)
+        var obj = req.body;
         // 2.调用数据模块,传入一个回调函数
         userModel.login(obj.email, (err, data) => {
             if (err) {
@@ -18,13 +17,26 @@ module.exports = {
             } else {
                 // 判断有没有查询到数据
                 if (data) {   // 说明查询到数据
-                    console.log(data)
                     // 再进行密码是否匹配的判断
                     if (data.password == obj.password) { // 说明密码匹配,登陆成功
+                        // res.writeHear(200,{
+                        //     "Set-Cookie":"isLogin=true"
+                        // })
+                        // res.end(JSON.stringify({
+                        //     code: 200,
+                        //     msg: '登陆成功'
+                        // }))
+                        // res.json({
+                        //     code: 200,
+                        //     msg: '登陆成功'
+                        // })
+                        // session
+                        req.session.isLogin = "true";
                         res.json({
                             code: 200,
                             msg: '登陆成功'
                         })
+                        // res.redirect("/login")
                     } else {
                         res.json({
                             code: 400,
@@ -39,5 +51,10 @@ module.exports = {
                 }
             }
         })
+    },
+    // 退出登录
+    loginOut(req, res) {
+        req.session.isLogin = "";
+        res.redirect('/login')
     }
 }

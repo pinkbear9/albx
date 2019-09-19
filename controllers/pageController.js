@@ -1,4 +1,4 @@
-
+const queryString = require("querystring");
 module.exports = {
     // 加载前端页面
     getIndexPage(req, res) {
@@ -13,7 +13,18 @@ module.exports = {
 
     // 加载后台页面
     getAdminIndexPage(req, res) {
-        res.render("admin/index.ejs");
+        // var obj = queryString.parse(req.headers.cookie);
+        // if (obj.islogin && obj.islogin == "true") {
+        //     res.render("admin/index.ejs");
+        // } else {
+        //     res.redirect("/login");
+        // }
+        // session
+        // if (req.session.isLogin && req.session.isLogin == "true") {
+            res.render("admin/index.ejs");
+        // } else {
+        //     res.redirect("/login");
+        // }
     },
     getAdminCategoriesPage(req, res) {
         res.render("admin/categories.ejs");

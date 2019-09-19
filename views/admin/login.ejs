@@ -16,32 +16,16 @@
       </div> -->
       <div class="form-group">
         <label for="email" class="sr-only">邮箱</label>
-        <input id="email" type="email" class="form-control" name="email" placeholder="邮箱" autofocus>
+        <input id="email" value="admin@zce.me" type="email" class="form-control" name="email" placeholder="邮箱" autofocus>
       </div>
       <div class="form-group">
         <label for="password" class="sr-only">密码</label>
-        <input id="password" type="password" class="form-control" name="password" placeholder="密码">
+        <input id="password" type="password" value="wanglei" class="form-control" name="password" placeholder="密码">
       </div>
       <a class="btnlogin btn btn-primary btn-block" href="javascript:;">登 录</a>
     </form>
   </div>
 </body>
-<script src="../../assets/vendors/jquery/jquery.min.js"></script>
-<script>
-  $(function(){
-    $(".btnlogin").on("click",function(){
-      var emailValue = $("#email").val();
-      var passwordValue = $("#password").val();
-      $.ajax({
-        type: "post",
-        url: "/login",
-        data: $('form').serialize(),
-        dataType: "json",
-        success: function(res){
-          console.log(res.msg);
-        }
-      })
-    })
-  })
-</script>
+<script src="../assets/vendors/jquery/jquery.min.js"></script>
+<script src="../assets/js/login.js"></script>
 </html>
