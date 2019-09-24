@@ -9,10 +9,11 @@
         <h1>写文章</h1>
       </div>
       <!-- 有错误信息时展示 -->
-      <!-- <div class="alert alert-danger">
-        <strong>错误！</strong>发生XXX错误
-      </div> -->
+      <div class="alert alert-danger" style="display:none">
+        <strong>提示！</strong><span></span>
+      </div>
       <form class="row">
+        <input type="hidden" name="id">
         <div class="col-md-9">
           <div class="form-group">
             <label for="title">标题</label>
@@ -32,12 +33,13 @@
           <div class="form-group">
             <label for="feature">特色图像</label>
             <!-- show when image chose -->
+            <input type="hidden" name="feature">
             <img class="help-block thumbnail" style="display: none">
-            <input id="feature" class="form-control" name="feature" type="file">
+            <input id="feature" class="form-control" type="file">
           </div>
           <div class="form-group">
             <label for="category">所属分类</label>
-            <select id="category" class="form-control" name="category">
+            <select id="category" class="form-control" name="category_id">
               <option value="1">未分类</option>
               <option value="2">潮生活</option>
             </select>
@@ -54,7 +56,7 @@
             </select>
           </div>
           <div class="form-group">
-            <button class="btn btn-primary" type="submit">保存</button>
+            <input type="button" class="btn btn-primary btnSave" value="保存">
           </div>
         </div>
       </form>
@@ -66,3 +68,6 @@
 
 <!-- 抽离的底部 -->
 <%- include('./layouts/admin_footer.ejs'); %>
+<script src="../../assets/js/common.js"></script>
+<script src="../../assets/vendors/ckeditor/ckeditor.js"></script>
+<script src="../../assets/js/postAdd.js"></script>
